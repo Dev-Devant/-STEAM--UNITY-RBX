@@ -1,0 +1,39 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+public class playerController : MonoBehaviour{
+    public float velocidad = 10.0f;
+    void Start()    {
+
+    }
+    void Update()    {
+        Vector3 direccion = Vector3.zero;
+
+        if (Input.GetKey(KeyCode.W)) {
+            direccion += -Vector3.forward;
+        }
+        if (Input.GetKey(KeyCode.S)) {
+            direccion += Vector3.forward;
+        }
+
+        if (Input.GetKey(KeyCode.A)) {
+            direccion += Vector3.right;
+        }
+        if (Input.GetKey(KeyCode.D)) {
+            direccion += -Vector3.right;
+        }
+
+        Vector3 rotacion = Vector3.zero;
+
+        if (Input.GetKey(KeyCode.Q)) {
+            rotacion += -Vector3.up * 90;
+        }
+        if (Input.GetKey(KeyCode.E)) {
+            rotacion += Vector3.up * 90;
+        }
+        
+        transform.Rotate(rotacion * Time.deltaTime);
+
+        transform.Translate(direccion * velocidad * Time.deltaTime);
+    }
+}
