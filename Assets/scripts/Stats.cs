@@ -1,18 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Stats : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
+public class Stats : MonoBehaviour{
+
+    public float health = 100;
+    public float healthRegen = 10;
+    public float healthMax = 100;
+    public bool canHealSelf = false;
+    public bool graveWhonts = false;
+
+    public float damage = 30;
+
+    public bool alive = true;
+    void Start() {
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void Update()    {
+        pasiveHeal();
+    }
+
+    private void pasiveHeal(){
+        if (!alive || !canHealSelf || health > healthMax){return;}
+        health += healthRegen * Time.deltaTime;
+        if(health > healthMax){; health = healthMax;}
+    }
+
+
+    public void takeDamage(float dealDamage){
+        if (!alive || dealDamage < 0){return;}
+        health -= dealDamage;
+        if(health <= 0){ alive = false; health = 0;}
     }
 }
