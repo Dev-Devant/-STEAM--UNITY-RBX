@@ -1,16 +1,29 @@
 using UnityEngine;
 
 public class Stats : MonoBehaviour{
-
+    /// <summary>
+    /// Variables de salud
+    /// </summary>
     public float health = 100;
     public float healthRegen = 10;
     public float healthMax = 100;
     public bool canHealSelf = false;
     public bool graveWhonts = false;
-
+    public bool alive = true;
+    /// <summary>
+    /// Variables de daño
+    /// </summary>
     public float damage = 30;
 
-    public bool alive = true;
+
+    /// <summary>
+    /// Variables de movimiento
+    /// </summary>
+    
+    public float speed = 10;
+
+    
+
     void Start() {
         
     }

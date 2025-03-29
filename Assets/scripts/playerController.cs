@@ -1,12 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 public class playerController : MonoBehaviour{
-    public float velocidad = 10.0f;
-    void Start()    {
 
+    private Stats stats;
+
+
+    void Start()    {
+        stats = GetComponent<Stats>();
     }
     void Update()    {
+        moveControl();
+    }
+
+    private void moveControl(){
         Vector3 direccion = Vector3.zero;
 
         if (Input.GetKey(KeyCode.W)) {
@@ -32,8 +37,11 @@ public class playerController : MonoBehaviour{
             rotacion += Vector3.up * 90;
         }
         
-        transform.Rotate(rotacion * Time.deltaTime);
+        float delta = Time.deltaTime;
 
-        transform.Translate(direccion * velocidad * Time.deltaTime);
+        transform.Rotate(rotacion * delta);
+
+        transform.Translate(direccion * stats.speed * delta);
     }
+
 }
