@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "STEAM RBX + UNITY.sln"
+    "dotnet.defaultSolution": "-STEAM--UNITY-RBX.sln"
 }
