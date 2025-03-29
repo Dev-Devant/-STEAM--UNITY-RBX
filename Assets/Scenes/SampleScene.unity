@@ -888,7 +888,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02fc4be106f2eef4c9d98b5463246655, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidad: 10
 --- !u!4 &267670745 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c31501b18d95d82419dad970a9527842,
@@ -943,6 +942,26 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5898876, y: 1.7094574, z: 0.32165337}
   m_Center: {x: 0.03149891, y: 0.8723526, z: -0.023936272}
+--- !u!114 &267670748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 267670743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e138f563ea8817d448c08dfaa615535e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 50
+  healthRegen: 10
+  healthMax: 100
+  canHealSelf: 1
+  graveWhonts: 0
+  alive: 1
+  damage: 30
+  speed: 10
 --- !u!1001 &303007178
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4209,6 +4228,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 267670747}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c31501b18d95d82419dad970a9527842,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 267670748}
   m_SourcePrefab: {fileID: 100100000, guid: c31501b18d95d82419dad970a9527842, type: 3}
 --- !u!1001 &1158821448
 PrefabInstance:
