@@ -9,7 +9,18 @@ public class playerController : MonoBehaviour{
     }
     void Update()    {
         moveControl();
+
+        if (Input.GetKeyDown(KeyCode.P)){
+            dealDamageTest();
+        }
+
     }
+
+    private void dealDamageTest(){
+        stats.takeDamage(20);
+        Debug.Log("Daño realizado con exito");
+    }
+
 
     private void moveControl(){
         Vector3 direccion = Vector3.zero;
