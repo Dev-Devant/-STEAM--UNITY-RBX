@@ -21,8 +21,9 @@ public class Stats : MonoBehaviour{
     /// </summary>
     
     public float speed = 10;
-
-    
+    public float attactRange = 1.0f;
+    public float detectRadius = 10;
+       
 
     void Start() {
         
