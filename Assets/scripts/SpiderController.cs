@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpiderController : MonoBehaviour{
@@ -17,7 +18,10 @@ public class SpiderController : MonoBehaviour{
 
         if (detected != null){
             if(IA.isOnAttactRange(detected.transform.position)){
-                // hacer daño
+                if(!stats.canAttact){
+                    detected.GetComponent<Stats>().takeDamage(stats.damage);
+                    stats.canAttact = true;
+                }
             }else{
                 IA.moveTo(detected.transform.position);
             }

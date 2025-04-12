@@ -7,6 +7,8 @@ public class Stats : MonoBehaviour{
     public float health = 100;
     public float healthRegen = 10;
     public float healthMax = 100;
+    public float pasiveHealColdown = 30;
+
     public bool canHealSelf = false;
     public bool graveWhonts = false;
     public bool alive = true;
@@ -36,6 +38,7 @@ public class Stats : MonoBehaviour{
     /// </summary>
     
     private float coldDawnTimer = 0;
+    private float pasiveHealTimer = 0;
 
 
     void Start() {
@@ -49,20 +52,19 @@ public class Stats : MonoBehaviour{
 
     private void pasiveHeal(){
         if (!alive || !canHealSelf || health > healthMax){return;}
+        if(pasiveHealTimer < pasiveHealColdown){return;}
         health += healthRegen * Time.deltaTime;
-        if(health > healthMax){; health = healthMax;}
+        if(health > healthMax){; health = healthMax;}        
     }
 
     private void damageControl(){
         if(canAttact){
-            coldDawnTimer = coldDawn;
-            canAttact = false;
-        }else{
-            if(coldDawnTimer > 0){
+            if(coldDawnTimer > 0 ){
                 coldDawnTimer -= Time.deltaTime;
-            }else{
-                coldDawnTimer= 0;
-            }            
+            } else{
+                canAttact = false;
+                coldDawnTimer = coldDawn;  
+            }
         }
     }
 
@@ -70,5 +72,9 @@ public class Stats : MonoBehaviour{
         if (!alive || dealDamage < 0){return;}
         health -= dealDamage;
         if(health <= 0){ alive = false; health = 0;}
+        pasiveHealTimer = 0;
+        if(pasiveHealTimer < pasiveHealColdown){
+            pasiveHealTimer += Time.deltaTime;
+        }
     }
 }
