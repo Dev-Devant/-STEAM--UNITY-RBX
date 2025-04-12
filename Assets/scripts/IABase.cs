@@ -37,10 +37,10 @@ public class IABase : MonoBehaviour{
     }
 
     public void moveTo(Vector3 pointToWalk){
-        Vector3 distanceVector = pointToWalk - transform.position;
+        Vector3 distanceVector = transform.position - pointToWalk;
         distanceVector = distanceVector.normalized;
-        Vector3 newPos = transform.position+ distanceVector;
-        transform.Translate(newPos * Time.deltaTime * stats.speed);
+        transform.Translate(distanceVector * Time.deltaTime * stats.speed);
+        transform.LookAt(player.transform);
     }
 
 }
