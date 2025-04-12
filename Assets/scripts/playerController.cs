@@ -26,17 +26,17 @@ public class playerController : MonoBehaviour{
         Vector3 direccion = Vector3.zero;
 
         if (Input.GetKey(KeyCode.W)) {
-            direccion += -Vector3.forward;
+            direccion += Vector3.forward;
         }
         if (Input.GetKey(KeyCode.S)) {
-            direccion += Vector3.forward;
+            direccion += -Vector3.forward;
         }
 
         if (Input.GetKey(KeyCode.A)) {
-            direccion += Vector3.right;
+            direccion += -Vector3.right;
         }
         if (Input.GetKey(KeyCode.D)) {
-            direccion += -Vector3.right;
+            direccion += Vector3.right;
         }
 
         Vector3 rotacion = Vector3.zero;
