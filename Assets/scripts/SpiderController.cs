@@ -19,7 +19,6 @@ public class SpiderController : MonoBehaviour{
             if(IA.isOnAttactRange(detected.transform.position)){
                 // hacer daño
             }else{
-                // mover
                 IA.moveTo(detected.transform.position);
             }
         }

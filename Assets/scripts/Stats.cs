@@ -14,7 +14,7 @@ public class Stats : MonoBehaviour{
     /// Variables de daño
     /// </summary>
     public float damage = 30;
-
+    public float coldDawn = 3;
 
     /// <summary>
     /// Variables de movimiento
@@ -24,6 +24,19 @@ public class Stats : MonoBehaviour{
     public float attactRange = 1.0f;
     public float detectRadius = 10;
        
+    /// <summary>
+    /// Variables de comportamiento
+    /// </summary>
+
+    public bool hostileToPlayer = true;
+    public bool canAttact = false;
+
+    /// <summary>
+    /// Variables de control para las mecanicas
+    /// </summary>
+    
+    private float coldDawnTimer = 0;
+
 
     void Start() {
         
@@ -31,6 +44,7 @@ public class Stats : MonoBehaviour{
 
     void Update()    {
         pasiveHeal();
+        damageControl();
     }
 
     private void pasiveHeal(){
@@ -39,6 +53,18 @@ public class Stats : MonoBehaviour{
         if(health > healthMax){; health = healthMax;}
     }
 
+    private void damageControl(){
+        if(canAttact){
+            coldDawnTimer = coldDawn;
+            canAttact = false;
+        }else{
+            if(coldDawnTimer > 0){
+                coldDawnTimer -= Time.deltaTime;
+            }else{
+                coldDawnTimer= 0;
+            }            
+        }
+    }
 
     public void takeDamage(float dealDamage){
         if (!alive || dealDamage < 0){return;}
