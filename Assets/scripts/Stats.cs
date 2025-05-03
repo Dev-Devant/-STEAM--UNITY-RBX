@@ -25,6 +25,8 @@ public class Stats : MonoBehaviour{
     public float speed = 10;
     public float attactRange = 1.0f;
     public float detectRadius = 10;
+
+    public float patrolRadius = 10;
        
     /// <summary>
     /// Variables de comportamiento

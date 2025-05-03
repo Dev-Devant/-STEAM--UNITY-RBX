@@ -24,7 +24,7 @@ public class spawner : MonoBehaviour{
 
         float x = r * Mathf.Cos(a);
         float z = r * Mathf.Sin(a);
-        float y = 1;
+        float y = 2;
         return Centro + new Vector3 (x,y,z);
     }
 
