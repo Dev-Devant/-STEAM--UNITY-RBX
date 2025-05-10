@@ -5,13 +5,17 @@ public class playerController : MonoBehaviour{
 
     private Animator animator;
 
+    public Camera cam ;
+    public GameObject projectile;
+
     void Start()    {
         stats = GetComponent<Stats>();
         animator = GetComponent<Animator>();
+
     }
     void Update()    {
         moveControl();
-
+        fireManagement ();
         if (Input.GetKeyDown(KeyCode.P)){
             dealDamageTest();
         }
@@ -95,5 +99,32 @@ public class playerController : MonoBehaviour{
              animator.SetLayerWeight(i, inputs[i]);
         }
     }
+
+    void fireManagement (){
+        if(Input.GetButtonDown("Fire1")){
+            Vector3 target = obtenerPuntoDeMira();
+            if(target != Vector3.zero){
+                GameObject shoot = Instantiate(projectile,transform.position + Vector3.forward * 2,Quaternion.identity);
+                Rigidbody shootrb = shoot.GetComponent<Rigidbody>();
+                Vector3 trajectory = (target -shoot.transform.position).normalized;
+                float force = 50;
+                shootrb.AddForce(trajectory * force,ForceMode.Impulse);
+
+
+            }
+
+        }
+
+    }
+
+    Vector3 obtenerPuntoDeMira(){
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out RaycastHit hit)){
+            return hit.point;
+        }
+        return Vector3.zero;
+    }
+
 
 }
